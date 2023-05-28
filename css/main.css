@@ -1,0 +1,64 @@
+body{
+  background-color:green;
+}
+#cardgrid{
+  /*テーブル全体をセンタリング*/
+  width:90%;
+  margin:10px auto;
+  /*グリッドレイアウトの設定*/
+  display:grid;
+  /*13個の要素を均等の幅で配置*/
+  grid-template-columns:repeat(4,1fr);
+  /*隙間を画面の縦幅の0.5%に設定*/
+  gap:24px;
+}
+/*td要素でなおかつclassにcardがついている要素*/
+div.card{
+  /*要素の縦横比をトランプ画像と同じ2:3に設定*/
+  aspect-ratio: 2 / 3;
+  background-color:yellow;
+  font-size: 4px;
+}
+/*div要素でclassにbackがついている要素は裏面画像(importantルール適用)*/
+div.back{
+  background-image:url(../assets/images/card.jpg) !important;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.title {
+  font-size: 60px;
+  color: gold;
+  text-align: center;
+}
+#startBt {
+	display: block;
+	text-align: center;
+	text-decoration: none;
+	width: 480px;
+	margin: auto;
+  margin-bottom: 68px;
+	padding: 1rem 4rem;
+	font-weight: bold;
+  font-size: 36px;
+	border-radius: 100vh;
+  border: solid thick white;
+	color: white;
+  background-color:green;
+}
+/*アニメーションの定義（名前はfadeout)*/
+@keyframes fadeout{
+  40%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+  }
+}
+div.fadeout{
+  /*使用するアニメーション名*/
+  animation-name:fadeout;
+  /*アニメーション時間*/
+  animation-duration:2s;
+  /*アニメーション終了時の挙動*/
+  animation-fill-mode:forwards; 
+}
