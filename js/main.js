@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   //CSVファイルを読み込む関数getCSV()の定義
   function getCSV(){
     var req = new XMLHttpRequest(); // HTTPでファイルを読み込むためのXMLHttpRrequestオブジェクトを生成
-    req.open("get", "assets/white_color_list.csv", true); // アクセスするファイルを指定
+    req.open("get", "/assets/white_color_list.csv", true); // アクセスするファイルを指定
     req.send(null); // HTTPリクエストの発行
     // レスポンスが返ってきたらconvertCSVtoArray()を呼ぶ
     req.onload = function(){
@@ -23,6 +23,24 @@ document.addEventListener('DOMContentLoaded',()=>{
 
   getCSV(); //最初に実行される
 
+  // URLパラメータ取得
+  const searchParams = new URLSearchParams(window.location.search);
+  const mode = searchParams.get('mode');
+  let typesLen = 4;
+  let isDescription = true;
+  if (mode === 'easy') {
+    typesLen = 4;
+    isDescription = true;
+  }
+  if (mode === 'hard') {
+    typesLen = 8;
+    isDescription = false;
+  }
+  if (mode === 'veryhard') {
+    typesLen = 122;
+    isDescription = false;
+  }
+
   //Cardクラス作成
   class Card{
     constructor(suit,num){
@@ -35,10 +53,10 @@ document.addEventListener('DOMContentLoaded',()=>{
   //カード配列作成
   const cards=[];
   //カードスーツ配列
-  const suits=['s','d','h','c'];
+  const suits=['s', 'd']; // const suits=['s','d','h','c'];
   //2重forで52枚のカードを作成
   for(let i=0;i<suits.length;i++){
-    for(let j=1;j<=13;j++){
+    for(let j=1;j<=typesLen;j++){
       //カードインスタンス生成(s1,s2....c13)
       let card=new Card(suits[i],j);
       //配列の末尾に追加
@@ -70,10 +88,14 @@ document.addEventListener('DOMContentLoaded',()=>{
         secondCard.classList.add('fadeout');
         //firstCard,secondカードを共にnullに戻す
         [firstCard,secondCard]=[null,null];
+
+
+        // if文でclass="fadeout"の数を数えてmaxだった場合、result文言とtwitterシェアボタン表示させる
+
+
       }else{
         //不正回だった場合は1.2秒後に裏面に戻す
         setTimeout(()=>{
-          alert(secondCard.dataset.description);
           firstCard.classList.add('back');
           secondCard.classList.add('back');
           [firstCard,secondCard]=[null,null];
@@ -87,17 +109,19 @@ document.addEventListener('DOMContentLoaded',()=>{
   const initgrid=()=>{
     //cardgridに入っている要素をすべて削除
     cardgrid.textContent=null;
-    for(let i=0;i<2;i++){
-      for(let j=0;j<10;j++){
+      for(let j=0;j<typesLen*2;j++){
         //１枚毎のトランプとなるdiv要素作成
         let div=document.createElement('div');
         //配列からcardを取り出す
-        let card=cards[i*13+j];
+        let card=cards[j];
         //色の名称を設定
-        // div.textContent = result[card.num][1] //card.suit+':'+card.num;
+        let p = div.appendChild(document.createElement("p"))
+        if (isDescription) {
+          p.textContent = result[card.num][1] //card.suit+':'+card.num;
+        }
         //背景色を設定
         div.style.backgroundColor = result[card.num][2];
-        div.dataset.description = result[card.num][3];
+        // div.dataset.description = result[card.num][3];
         //divにcardクラス追加
         div.classList.add('card');
         //divにcardクラスとbackクラス追加
@@ -109,7 +133,6 @@ document.addEventListener('DOMContentLoaded',()=>{
         //cardgrid要素に追加
         cardgrid.append(div);
       }
-    }
   };
   //カードシャッフル関数(Fisher–Yates shuffle)
   const shuffle=()=>{
@@ -126,4 +149,10 @@ document.addEventListener('DOMContentLoaded',()=>{
     shuffle();
     initgrid();
   });
+
+
+  // 諦めるボタンを押下した時の処理（result文言とtwitterシェアボタン表示させる）
+
+
+  // おまけページに遷移した時の処理（CSVデータを並べて表示：hoge色のトランプ画像、title（上）、説明（下））
 });

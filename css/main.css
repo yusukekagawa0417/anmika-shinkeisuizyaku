@@ -25,12 +25,35 @@ div.back{
   background-size: contain;
   background-repeat: no-repeat;
 }
+div.card > p {
+  font-size: 24px;
+  margin: 8px
+}
+div.back > p {
+  display: none;
+}
 .title {
-  font-size: 60px;
+  font-size: 72px;
+  color: gold;
+  text-align: center;
+  margin: 80px 0;
+  font-weight: bold;
+}
+.sub-title {
+  font-size: 40px;
   color: white;
   text-align: center;
+  margin: 28px 0 0;
+  font-weight: bold;
 }
-#startBt {
+.item {
+  font-size: 54px;
+  color: gold;
+  text-align: center;
+  margin: 136px 0 68px;
+  font-weight: bold;
+}
+.button, #startBt {
 	display: block;
 	text-align: center;
 	text-decoration: none;
@@ -60,5 +83,5 @@ div.fadeout{
   /*アニメーション時間*/
   animation-duration:2s;
   /*アニメーション終了時の挙動*/
-  animation-fill-mode:forwards; 
+  animation-fill-mode:forwards;
 }
