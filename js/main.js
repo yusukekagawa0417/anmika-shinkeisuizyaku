@@ -41,6 +41,8 @@ document.addEventListener('DOMContentLoaded',()=>{
     isDescription = false;
   }
 
+  const resultUrl = '/result'
+
   //Cardクラス作成
   class Card{
     constructor(suit,num){
@@ -89,9 +91,12 @@ document.addEventListener('DOMContentLoaded',()=>{
         //firstCard,secondカードを共にnullに戻す
         [firstCard,secondCard]=[null,null];
 
-
-        // if文でclass="fadeout"の数を数えてmaxだった場合、result文言とtwitterシェアボタン表示させる
-
+        // if文でclass="fadeout"の数を数えてmaxだった場合
+        const fadeouts = document.getElementsByClassName('fadeout');
+        if (fadeouts.length === typesLen * 2) {
+          
+          window.location.href = resultUrl + '?pt=1';
+        }
 
       }else{
         //不正回だった場合は1.2秒後に裏面に戻す
@@ -142,17 +147,26 @@ document.addEventListener('DOMContentLoaded',()=>{
       [cards[index],cards[i]]=[cards[i],cards[index]]
     }
   };
+  // 諦めるボタンの追加
+  const addGiveUpBt = () => {
+    const a = document.createElement('a');
+    a.setAttribute('id', 'giveup');
+    a.classList.add('button');
+    a.textContent = '人間、諦めも大事';
+    a.setAttribute('href', resultUrl + '?pt=2');
+    cardgrid.after(a);
+  };
   //ボタンのDOM取得
   const startBt=document.getElementById('startBt');
   //ボタンを押したときの処理
+  let started = false;
   startBt.addEventListener('click',()=>{
+    if (started) return;
     shuffle();
     initgrid();
+    addGiveUpBt();
+    started = true;
   });
-
-
-  // 諦めるボタンを押下した時の処理（result文言とtwitterシェアボタン表示させる）
-
 
   // おまけページに遷移した時の処理（CSVデータを並べて表示：hoge色のトランプ画像、title（上）、説明（下））
 });
