@@ -110,15 +110,15 @@ document.addEventListener('DOMContentLoaded',()=>{
         const fadeouts = document.getElementsByClassName('fadeout');
         if (fadeouts.length === typesLen * 2) {
           if (mode === 'easy') {
-            window.location.href = resultUrl + '?pt=cdghgg&len=' + fadeouts.length;
+            window.location.href = resultUrl + '?pt=cdghgg&len=' + fadeouts.length + '&mode=' + mode;
             return false;
           }
           if (mode === 'hard') {
-            window.location.href = resultUrl + '?pt=47hm3y&len=' + fadeouts.length;
+            window.location.href = resultUrl + '?pt=47hm3y&len=' + fadeouts.length + '&mode=' + mode;
             return false;
           }
           if (mode === 'veryhard') {
-            window.location.href = resultUrl + '?pt=dfkujp&len=' + fadeouts.length;
+            window.location.href = resultUrl + '?pt=dfkujp&len=' + fadeouts.length + '&mode=' + mode;
             return false;
           }
         }
@@ -184,18 +184,18 @@ document.addEventListener('DOMContentLoaded',()=>{
     a.addEventListener('click',()=>{
       const fadeouts = document.getElementsByClassName('fadeout');
       if (fadeouts.length <= 10) {
-        window.location.href = resultUrl + '?pt=jyr7hf&len=' + fadeouts.length;
+        window.location.href = resultUrl + '?pt=jyr7hf&len=' + fadeouts.length + '&mode=' + mode;
         return false;
       }
       if (fadeouts.length <= 30) {
-        window.location.href = resultUrl + '?pt=zp9eru&len=' + fadeouts.length;
+        window.location.href = resultUrl + '?pt=zp9eru&len=' + fadeouts.length + '&mode=' + mode;
         return false;
       }
       if (fadeouts.length <= 50) {
-        window.location.href = resultUrl + '?pt=y7m2xt&len=' + fadeouts.length;
+        window.location.href = resultUrl + '?pt=y7m2xt&len=' + fadeouts.length + '&mode=' + mode;
         return false;
       }
-      window.location.href = resultUrl + '?pt=7wu2eg&len=' + fadeouts.length;
+      window.location.href = resultUrl + '?pt=7wu2eg&len=' + fadeouts.length + '&mode=' + mode;
       return false;
     });
     cardgrid.after(a);
