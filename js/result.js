@@ -4,15 +4,19 @@
 const searchParams = new URLSearchParams(window.location.search);
 const pt = searchParams.get('pt');
 const maisu = searchParams.get('len');
+const btn_audio_clear_1 = document.getElementById('btn_audio_clear_1');
 let resultDescription = "";
 if (pt === 'cdghgg') {
   resultDescription = "ええやーん！<br>やるやん自分！<br>ハッピー、ラッキー、<br>ラブ、スマイル、<br>ピース、ドリーム！<br>今日も1日元気出して行こか！";
+  btn_audio_clear_1.play();
 }
 if (pt === '47hm3y') {
   resultDescription = "すごい！すごい！<br>ほんまにすごい！<br>すごい通り越して変やで、自分！";
+  btn_audio_clear_1.play();
 }
 if (pt === 'dfkujp') {
   resultDescription = "ゲームクリア<br>おめでとうございます。<br>とてつもない偉業を<br>達成したあなたに<br>敬意と皮肉を込めて<br>次の言葉を送ります。<br><br>私が一番好きなものは<br>お金がかからないもので、<br>誰もが持っているものだ。<br>そして、それは世の中で<br>一番素晴らしいものなんだ。<br>それは、「時間」なんだよ。<br><br>Steve Jobs<br>スティーブ・ジョブズ";
+  btn_audio_clear_1.play();
 }
 if (pt === 'jyr7hf') {
   resultDescription = "もうやめてしまうん？<br>また勉強しに来てな！";

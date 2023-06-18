@@ -23,6 +23,20 @@ document.addEventListener('DOMContentLoaded',()=>{
 
   getCSV(); //最初に実行される
 
+  // 効果音取得
+  const btn_audio_correct_array = [
+    document.getElementById('btn_audio_correct_1'),
+    document.getElementById('btn_audio_correct_2'),
+    document.getElementById('btn_audio_correct_3'),
+    document.getElementById('btn_audio_correct_4')
+  ];
+  const btn_audio_miss_array = [
+    document.getElementById('btn_audio_miss_1'),
+    document.getElementById('btn_audio_miss_2'),
+    document.getElementById('btn_audio_miss_3'),
+    document.getElementById('btn_audio_miss_4')
+  ];
+
   // URLパラメータ取得
   const searchParams = new URLSearchParams(window.location.search);
   const mode = searchParams.get('mode');
@@ -90,7 +104,8 @@ document.addEventListener('DOMContentLoaded',()=>{
         secondCard.classList.add('fadeout');
         //firstCard,secondカードを共にnullに戻す
         [firstCard,secondCard]=[null,null];
-
+        const num = Math.floor(Math.random() * btn_audio_correct_array.length);
+        btn_audio_correct_array[num].play();
         // if文でclass="fadeout"の数を数えてmaxだった場合
         const fadeouts = document.getElementsByClassName('fadeout');
         if (fadeouts.length === typesLen * 2) {
@@ -110,6 +125,8 @@ document.addEventListener('DOMContentLoaded',()=>{
 
       }else{
         //不正回だった場合は1.2秒後に裏面に戻す
+        const num = Math.floor(Math.random() * btn_audio_miss_array.length);
+        btn_audio_miss_array[num].play();
         setTimeout(()=>{
           firstCard.classList.add('back');
           secondCard.classList.add('back');
@@ -193,6 +210,9 @@ document.addEventListener('DOMContentLoaded',()=>{
     initgrid();
     addGiveUpBt();
     started = true;
+    document.getElementById('btn_audio').currentTime = 0; //連続クリックに対応
+    document.getElementById('btn_audio').play(); //クリックしたら音を再生
+    document.getElementById('btn_audio').loop = true;
   });
 
   // おまけページに遷移した時の処理（CSVデータを並べて表示：hoge色のトランプ画像、title（上）、説明（下））

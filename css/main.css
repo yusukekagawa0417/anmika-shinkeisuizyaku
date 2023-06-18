@@ -39,7 +39,7 @@ div.back > p {
   font-size: 32px;
   color: white;
   text-align: center;
-  margin: 32px 0;
+  margin: 32px 0 52px;
   font-weight: bold;
 }
 .sub-title {
@@ -53,15 +53,18 @@ div.back > p {
   font-size: 28px;
   color: gold;
   text-align: center;
-  margin: 68px 0 34px;
+  margin: 0 0 34px;
   font-weight: bold;
 }
 .name {
-  font-size: 20px;
+  font-size: 16px;
   color: white;
   text-align: center;
   margin: 14px 0 0;
   font-weight: bold;
+}
+.button-box {
+  margin-bottom: 34px;
 }
 .button, #startBt {
 	display: block;
@@ -69,7 +72,6 @@ div.back > p {
 	text-decoration: none;
 	width: 240px;
 	margin: auto;
-  margin-bottom: 34px;
 	padding: 1rem 2rem;
 	font-weight: bold;
   font-size: 14px;
@@ -98,7 +100,7 @@ div.fadeout{
 }
 .twitter {
   text-align: center;
-  margin: 14px auto;
+  margin: 14px auto 52px;
 }
 .result-description {
   max-width: 320px;
@@ -121,3 +123,26 @@ div.fadeout{
 .result-maisu > span {
   font-size: 24px;
 } */
+.kome {
+  color: white;
+  font-size: 14px;
+  text-align: center;
+  margin: 8px 0;
+}
+.movie {
+  position: absolute;
+  display: flex;
+  flex-flow: column;
+  justify-content:space-around;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  background: black;
+}
+.movie > iframe {
+  width: 100vw;
+  height: 80vh;
+}
+.movie .button {
+  background: black;
+}
