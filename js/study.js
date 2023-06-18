@@ -45,6 +45,13 @@ document.addEventListener('DOMContentLoaded',()=>{
       //study要素に追加
       study.append(div);
     });
+    // ボタン追加
+    const buttonBox = document.body.appendChild(document.createElement("div"));
+    buttonBox.classList.add('button-box');
+    const button = buttonBox.appendChild(document.createElement("a"));
+    button.classList.add('button');
+    button.setAttribute('href', '/');
+    button.textContent = 'これでもう大丈夫やね♪';
   }
 
   getCSVAndDisplay(); //最初に実行される
