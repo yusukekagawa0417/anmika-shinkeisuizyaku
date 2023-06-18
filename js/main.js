@@ -214,6 +214,4 @@ document.addEventListener('DOMContentLoaded',()=>{
     document.getElementById('btn_audio').play(); //クリックしたら音を再生
     document.getElementById('btn_audio').loop = true;
   });
-
-  // おまけページに遷移した時の処理（CSVデータを並べて表示：hoge色のトランプ画像、title（上）、説明（下））
 });

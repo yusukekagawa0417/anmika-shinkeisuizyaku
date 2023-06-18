@@ -18,7 +18,6 @@ body{
 div.card{
   /*要素の縦横比をトランプ画像と同じ2:3に設定*/
   aspect-ratio: 2 / 3;
-  background-color:yellow;
   font-size: 4px;
   cursor: pointer;
 }
@@ -145,4 +144,30 @@ div.fadeout{
 }
 .movie .button {
   background: black;
+}
+#study {
+  margin: 0 0 34px;
+  padding: 0 28px;
+}
+.study-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 34px;
+}
+.study-container .card {
+  width: 60px;
+}
+.name-desc {
+  color: white;
+  width: 240px;
+  line-height: 1.6;
+  margin-left: 8px;
+}
+.name-desc p {
+  overflow-wrap: break-word;
+}
+.name-desc p:first-child {
+  font-weight: 700;
+  margin-bottom: 4px;
+  text-decoration:underline;
 }
