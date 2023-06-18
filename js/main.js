@@ -94,8 +94,18 @@ document.addEventListener('DOMContentLoaded',()=>{
         // if文でclass="fadeout"の数を数えてmaxだった場合
         const fadeouts = document.getElementsByClassName('fadeout');
         if (fadeouts.length === typesLen * 2) {
-          
-          window.location.href = resultUrl + '?pt=1';
+          if (mode === 'easy') {
+            window.location.href = resultUrl + '?pt=cdghgg&len=' + fadeouts.length;
+            return false;
+          }
+          if (mode === 'hard') {
+            window.location.href = resultUrl + '?pt=47hm3y&len=' + fadeouts.length;
+            return false;
+          }
+          if (mode === 'veryhard') {
+            window.location.href = resultUrl + '?pt=dfkujp&len=' + fadeouts.length;
+            return false;
+          }
         }
 
       }else{
@@ -153,7 +163,24 @@ document.addEventListener('DOMContentLoaded',()=>{
     a.setAttribute('id', 'giveup');
     a.classList.add('button');
     a.textContent = '人間、諦めも大事';
-    a.setAttribute('href', resultUrl + '?pt=2');
+    // a.setAttribute('href', resultUrl + '?pt=2');
+    a.addEventListener('click',()=>{
+      const fadeouts = document.getElementsByClassName('fadeout');
+      if (fadeouts.length <= 10) {
+        window.location.href = resultUrl + '?pt=jyr7hf&len=' + fadeouts.length;
+        return false;
+      }
+      if (fadeouts.length <= 30) {
+        window.location.href = resultUrl + '?pt=zp9eru&len=' + fadeouts.length;
+        return false;
+      }
+      if (fadeouts.length <= 50) {
+        window.location.href = resultUrl + '?pt=y7m2xt&len=' + fadeouts.length;
+        return false;
+      }
+      window.location.href = resultUrl + '?pt=7wu2eg&len=' + fadeouts.length;
+      return false;
+    });
     cardgrid.after(a);
   };
   //ボタンのDOM取得

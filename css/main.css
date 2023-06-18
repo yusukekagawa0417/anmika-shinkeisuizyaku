@@ -100,3 +100,24 @@ div.fadeout{
   text-align: center;
   margin: 14px auto;
 }
+.result-description {
+  max-width: 320px;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  margin: 14px auto 52px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+/* .result-maisu {
+  max-width: 320px;
+  font-size: 20px;
+  color: gold;
+  text-align: center;
+  margin: 14px auto 28px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+.result-maisu > span {
+  font-size: 24px;
+} */
