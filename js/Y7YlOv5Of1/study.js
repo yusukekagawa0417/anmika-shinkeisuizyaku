@@ -1,4 +1,7 @@
 'use strict';
+
+// https://utf-8.jp/public/jjencode.html
+
 document.addEventListener('DOMContentLoaded',()=>{
   const result = []; // 最終的な二次元配列を入れるための配列
   //CSVファイルを読み込み表示させる関数の定義

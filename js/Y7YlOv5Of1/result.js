@@ -1,10 +1,13 @@
 'use strict';
 
+// https://utf-8.jp/public/jjencode.html
+
 // URLパラメータ取得
 const searchParams = new URLSearchParams(window.location.search);
-const pt = searchParams.get('pt');
-const maisu = searchParams.get('len');
-const mode = searchParams.get('mode');
+const pt = escapeHTML(searchParams.get('pt'));
+const maisu = escapeHTML(searchParams.get('len'));
+const mode = escapeHTML(searchParams.get('mode'));
+
 const btn_audio_clear_1 = document.getElementById('btn_audio_clear_1');
 let resultDescription = "";
 let resultDescription2 = "";
@@ -54,3 +57,11 @@ let shareUrl  = 'https://twitter.com/share?ref_src=twsrc%5Etfw&hashtags=アン�
 const shareArea = document.getElementById('twitter');
 const shareLink = '<a href="' + shareUrl + '" class="twitter-share-button" data-size="large" data-text="' + resultDescription2 + '" data-url="https://anmika-shinkeisuijaku.netlify.app/">twitter</a>';
 shareArea.innerHTML = shareLink;
+
+function escapeHTML(string){
+  return string.replace(/&/g, '&lt;')
+  .replace(/</g, '&lt;')
+  .replace(/>/g, '&gt;')
+  .replace(/"/g, '&quot;')
+  .replace(/'/g, "&#x27;");
+}

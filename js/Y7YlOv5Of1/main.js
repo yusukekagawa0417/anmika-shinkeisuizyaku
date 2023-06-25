@@ -1,4 +1,7 @@
 'use strict';
+
+// https://utf-8.jp/public/jjencode.html
+
 document.addEventListener('DOMContentLoaded',()=>{
   const result = []; // 最終的な二次元配列を入れるための配列
   //CSVファイルを読み込む関数getCSV()の定義
@@ -39,7 +42,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 
   // URLパラメータ取得
   const searchParams = new URLSearchParams(window.location.search);
-  const mode = searchParams.get('mode');
+  const mode = escapeHTML(searchParams.get('mode'));
   let typesLen = 4;
   let isDescription = true;
   if (mode === 'easy') {
@@ -215,4 +218,12 @@ document.addEventListener('DOMContentLoaded',()=>{
     document.getElementById('btn_audio').play(); //クリックしたら音を再生
     document.getElementById('btn_audio').loop = true;
   });
+
+  function escapeHTML(string){
+    return string.replace(/&/g, '&lt;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, "&#x27;");
+  }
 });
